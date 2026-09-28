@@ -14,11 +14,11 @@ Audit of the current homepage at https://thebunkroom.co.uk/ (GoDaddy Website Bui
 5. **The room photos are tiny.** The two room photos stored on the site are only 275 × 183 pixels, so they look blurry on any modern phone or laptop. Higher-resolution photos are needed.
 6. **There is no photo of the Small Double.** Only one double-room photo exists, and it isn't labelled as Small or Standard.
 7. **The main photo is mislabelled.** The big header image is the outdoor yarden, but its hidden description (used by screen readers and Google) says "Double room with en-suite".
-8. **The "Reviews" section is empty.** It has a heading and nothing under it, which looks worse than no reviews section at all.
-9. **One header image is a GoDaddy stock photo**, not a photo of the hostel.
+8. **The reviews are hard to see.** The site has a Google reviews widget: 4.6 out of 5 from 130 reviews, with three 5-star reviews showing. But it only appears once the page's scripts have loaded (the page source has just the heading), it sits on a stock photo of a wooden attic rather than the hostel, and the empty "Announcement" popup covers it on first visit. The reviews are cut off after about 25 characters, so visitors never read the good bits.
+9. **Some background images are GoDaddy stock photos**, not photos of the hostel. The wooden attic behind the reviews is one of them.
 
 ### Leftover builder placeholders
-10. An **"Announcement / Learn more"** bar left over from the template.
+10. An **empty "Announcement / Learn more" popup** from the template. It opens over the page on first visit, with no message.
 11. A **"More"** item in the navigation menu that leads nowhere useful.
 12. **Empty list items** in the page structure.
 
@@ -50,7 +50,7 @@ Audit of the current homepage at https://thebunkroom.co.uk/ (GoDaddy Website Bui
 ## Placeholders still to fill
 - `{MY_EMAIL}` in the form's `data-endpoint` in `index.html`: the address FormSubmit sends enquiries to. The first submission triggers a one-time FormSubmit activation email.
 - `[Add Small Double photo]` on the Small Double room card.
-- `[Add real guest reviews here]`: three placeholder review cards. Only add genuine reviews, with permission.
+- **Reviews:** the concept shows the three Google reviews from the current site word for word, plus the 4.6 rating from 130 reviews (as of 28 September 2026). Refresh them before launch, or swap in a live Google reviews embed.
 - Higher-resolution room photos to replace the 275 px originals (`assets/dorm.webp`, `assets/double.webp`).
 - Confirm the Standard Double photo really shows the Standard Double. It's the only double-room photo on the current site.
 - A real logo, if the hostel has one. The concept uses a simple "B" mark.

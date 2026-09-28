@@ -164,16 +164,24 @@ address { font-style: normal; }
 .map-frame { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: #e9eee5; aspect-ratio: 4 / 3; }
 .map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
 
-/* Reviews placeholder */
-.placeholder-note { border: 2px dashed #9dbb86; background: rgba(255, 255, 255, .7); border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 24px; color: var(--ink-soft); }
-.placeholder-note strong { display: block; color: var(--ink); font-size: 1.1rem; }
+/* Reviews */
+.rating-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 28px; }
+.rating-score { font-family: var(--font-head); font-weight: 800; font-size: 2.6rem; line-height: 1; }
+.rating-star { color: #a86a00; font-size: .7em; margin-left: 4px; vertical-align: .15em; }
+.rating-count { color: var(--ink-soft); font-weight: 500; }
 .review-grid { display: grid; gap: 16px; }
-.review-card { position: relative; background: var(--white); border-radius: var(--radius); padding: 28px 24px 22px; box-shadow: var(--shadow); }
-.review-card::before { content: "\201C"; position: absolute; top: 4px; left: 18px; font-family: var(--font-head); font-size: 4rem; line-height: 1; color: var(--green); }
-.review-card.is-placeholder { border: 2px dashed #c3d3b6; }
-.review-text { margin-top: 24px; color: var(--ink-soft); font-style: italic; }
-.review-author { font-weight: 700; margin: 0; }
-.review-author span { font-weight: 400; color: var(--ink-soft); }
+.review-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+.stars { color: #a86a00; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 10px; }
+.review-text { margin: 0 0 16px; flex: 1; }
+.review-text::before { content: "\201C"; }
+.review-text::after { content: "\201D"; }
+.review-author { display: flex; align-items: center; gap: 12px; margin: 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.avatar { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 50%; color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; }
+.author-meta { display: flex; flex-direction: column; font-weight: 700; line-height: 1.3; }
+.review-date { font-weight: 400; font-size: .9rem; color: var(--ink-soft); }
+.g-icon { width: 22px; height: 22px; flex: none; margin-left: auto; }
+.rating-summary .g-icon { width: 36px; height: 36px; margin: 0; }
+.reviews-more { margin: 24px 0 0; }
 
 /* Booking form */
 .booking-grid { display: grid; gap: 32px; align-items: start; }
@@ -435,7 +443,7 @@ address { font-style: normal; }
           <h2 id="group-title">Bringing a big group? Have the whole place to yourselves.</h2>
           <p class="group-lead">Hire the entire hostel for up to <strong>27 people</strong>: your own rooms, kitchen, dining room and yarden, 2 minutes from the station.</p>
           <ul class="group-list">
-            <li>Stag &amp; hen parties</li>
+            <!-- <li>Stag &amp; hen parties</li> -->
             <li>Sports teams</li>
             <li>School &amp; club trips</li>
             <li>Family gatherings</li>
@@ -484,29 +492,34 @@ address { font-style: normal; }
       </div>
     </section>
 
-    <!-- Reviews placeholder -->
+    <!-- Reviews: copied verbatim from the Google reviews widget on thebunkroom.co.uk (28 Sep 2026) -->
     <section class="section section-tint" id="reviews" aria-labelledby="reviews-title">
       <div class="container">
         <p class="eyebrow">Guest reviews</p>
         <h2 id="reviews-title">What our guests say</h2>
-        <div class="placeholder-note" role="note">
-          <strong>[Add real guest reviews here]</strong>
-          These cards show the layout only. Replace them with genuine guest reviews (with permission) before this goes live.
-        </div>
+        <p class="rating-summary">
+          <svg class="g-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.9A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.3 9.1 5.4 12 5.4Z"/></svg>
+          <span class="rating-score">4.6<span class="rating-star" aria-hidden="true">★</span></span>
+          <span class="rating-count">out of 5 from 130 Google reviews</span>
+        </p>
         <ul class="review-grid">
-          <li class="review-card is-placeholder">
-            <p class="review-text">[Add real guest review text here]</p>
-            <p class="review-author">[Guest name] <span>&middot; [Source &amp; date]</span></p>
+          <li class="review-card fade-in">
+            <p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+            <blockquote class="review-text">Great overnight stay. Less than 5 minutes from the station.</blockquote>
+            <p class="review-author"><span class="avatar" style="background:#bf360c" aria-hidden="true">M</span><span class="author-meta">Malcolm Wright <span class="review-date">Google review, August 2026</span></span><svg class="g-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.9A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></p>
           </li>
-          <li class="review-card is-placeholder">
-            <p class="review-text">[Add real guest review text here]</p>
-            <p class="review-author">[Guest name] <span>&middot; [Source &amp; date]</span></p>
+          <li class="review-card fade-in">
+            <p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+            <blockquote class="review-text">My husband and I loved staying here. It was a last minute decision and he was very helpful and accommodated us within a very short time. It has a nice dining area and a full kitchen which was very helpful, located very close to everything.</blockquote>
+            <p class="review-author"><span class="avatar" style="background:#5e7d2f" aria-hidden="true">A</span><span class="author-meta">Anastasia Laughlin <span class="review-date">Google review, May 2026</span></span><svg class="g-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.9A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></p>
           </li>
-          <li class="review-card is-placeholder">
-            <p class="review-text">[Add real guest review text here]</p>
-            <p class="review-author">[Guest name] <span>&middot; [Source &amp; date]</span></p>
+          <li class="review-card fade-in">
+            <p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+            <blockquote class="review-text">Graham pulled me out a hole,the room was spotless and they were so friendly.</blockquote>
+            <p class="review-author"><span class="avatar" style="background:#8d6e63" aria-hidden="true">S</span><span class="author-meta">Steven Finnegan <span class="review-date">Google review, May 2026</span></span><svg class="g-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.9A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></p>
           </li>
         </ul>
+        <p class="reviews-more"><a class="text-link" href="https://www.google.com/search?q=The+Bunkroom+Chester+reviews" target="_blank" rel="noopener">Read more reviews on Google <span aria-hidden="true">&rarr;</span></a></p>
       </div>
     </section>
 
