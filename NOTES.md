@@ -45,7 +45,7 @@ Audit of the current homepage at https://thebunkroom.co.uk/ (GoDaddy Website Bui
 - A green whole-hostel hire band aimed at stag and hen parties, sports teams, school and club trips, and family gatherings.
 - Real photos converted to WebP. The header photo's 1.4 MB original is now served at 60–200 KB depending on screen size.
 - A copyright year that updates itself, and no builder branding.
-- Lighthouse scores on local testing: accessibility 100, performance 99 on desktop and 89–99 on mobile.
+- Lighthouse on the live preview: accessibility 100, best practices 100, performance 91 on mobile and 93 on desktop.
 
 ## Placeholders still to fill
 - `{MY_EMAIL}` in the form's `data-endpoint` in `index.html`: the address FormSubmit sends enquiries to. The first submission triggers a one-time FormSubmit activation email.
